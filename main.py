@@ -1,9 +1,16 @@
-import requests
+from flask import Flask, render_template
 
-api_key ='cb1e687b41ba41ffa18efd211e7d2bdb'
-url ='https://newsapi.org/v2/everything?q=tesla&from=2023-08-20&sortBy=publishedAt&apiKey=cb1e687b41ba41ffa18efd211e7d2bdb'
+app = Flask('Website')
 
-request = requests.get(url)
-content = request.json()
-for article in content['articles']:
-    print(article['title'])
+@app.route('/')
+
+def home():
+    return render_template('tutorial.html')
+
+@app.route('/about/')
+
+def about():
+    return render_template('about.html')
+
+
+app.run(debug=True)
